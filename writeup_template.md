@@ -106,4 +106,5 @@ To capture good driving behavior, I recorded 1.5 laps on track one using center 
 I randomly shuffled the data set and put 20% of the data into a validation set. 
 
 The final video of the autonomous mode can be found here:
-[run1.mp4](run1.mp4)
+
+[![Watch on Youtube](./train_data/IMG/center_2019_09_01_02_48_57_171.jpg)](https://youtu.be/OI-w--BwRSk)

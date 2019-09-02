@@ -97,11 +97,11 @@ The final model architecture (model.py lines 57-63) consisted of a convolution n
 
 To capture good driving behavior, I recorded 1.5 laps on track one using center lane driving. Here is an example image of center lane driving:
 
-![center lane](./data/IMG/center_2019_09_01_02_47_57_972.jpg)
+![center lane](./train_data/IMG/center_2019_09_01_02_47_57_972.jpg)
 
-![left lane](./data/IMG/left_2019_09_01_02_47_57_972.jpg)
+![left lane](./train_data/IMG/left_2019_09_01_02_47_57_972.jpg)
 
-![right lane](./data/IMG/right_2019_09_01_02_47_57_972.jpg)
+![right lane](./train_data/IMG/right_2019_09_01_02_47_57_972.jpg)
 
 I randomly shuffled the data set and put 20% of the data into a validation set. 
 

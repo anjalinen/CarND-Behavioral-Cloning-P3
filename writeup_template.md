@@ -44,23 +44,22 @@ The model.py file contains the code for training and saving the convolution neur
 
 #### 1. An appropriate model architecture has been employed
 
-My model consists of a convolution neural network with 3x3 filter sizes and depths 15 (model.py lines 57-63) 
+My model consists of a convolution neural network with filter sizes from 24 to 64 and depths 15 (model.py lines 65-76) 
 
-The model includes RELU layers to introduce nonlinearity (code line 59), and the data is normalized in the model using a Keras lambda layer (code line 58). 
+The model includes RELU layers to introduce nonlinearity, and the data is normalized in the model using a Keras lambda layer (code line 65). 
 
 #### 2. Attempts to reduce overfitting in the model
 
-The model contains dropout layers in order to reduce overfitting (model.py lines 60). 
-
+The weights were kept constant to reduce overfitting. Also different data augmentation techniques like flipping images and using left and right images helps with reducing overfitting.
 The model was trained and validated on different data sets to ensure that the model was not overfitting. The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
 #### 3. Model parameter tuning
 
-The model used an Adam optimizer, so the learning rate was not tuned manually (model.py line 66).
+The model used an Adam optimizer, so the learning rate was not tuned manually (model.py line 77).
 
 #### 4. Appropriate training data
 
-Training data was chosen to keep the vehicle driving on the road. I used a combination of center lane driving, recovering from the left and right sides of the road and adjusted the steering angle for the left at 0.4 and the right at -0.2
+Training data was chosen to keep the vehicle driving on the road. I used a combination of center lane driving, recovering from the left and right sides of the road and adjusted the steering angle for the left at 0.2 and the right at -0.2
 
 For details about how I created the training data, see the next section. 
 
@@ -70,11 +69,9 @@ For details about how I created the training data, see the next section.
 
 The overall strategy for deriving a model architecture was to make sure that it drives in autonomous mode with going off the road.
 
-My first step was to use a convolution neural network model similar to the NVIDIA mode, I thought this model might be appropriate because it has been tested before and works on autonomous cars. I tried a few iterations and was able to reduce it to less layers.
+My first step was to use a convolution neural network model similar to the NVIDIA model, I thought this model might be appropriate because it has been tested before and works on autonomous cars. I tried a few iterations and was able to reduce it to less layers.
 
-In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set (80% and 20%). I found that my first model had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting. 
-
-To combat the overfitting, I modified the model to add a dropout layer and adjusted the epochs.
+In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set (80% and 20%). I initially did the training with only 5 epochs and then again with 10 epochs. The epochs are relatively a small number to avoid overfitting.
 
 I had to tweak the cropping to avoid the car going off the road after the bridge.
 
@@ -82,20 +79,13 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 #### 2. Final Model Architecture
 
-The final model architecture (model.py lines 57-63) consisted of a convolution neural network with the following layers and layer sizes:
+The final model architecture (model.py lines 65-77) consisted of a convolution neural network with the following layers and layer sizes:
 
-* Input 64x64x3
-* process image with 32x32x3
-* Convulational2D with 15x3x3
-* Dropout with 0.4
-* Maxpooling2D with 2x2
-* Flatter
-* Dense
-
+[model architecture](./nvidia.png)
 
 #### 3. Creation of the Training Set & Training Process
 
-To capture good driving behavior, I recorded 1.5 laps on track one using center lane driving. Here is an example image of center lane driving:
+To capture good driving behavior, I recorded 2 laps on track one using center lane driving. Here is an example image of center lane driving:
 
 ![center lane](./train_data/IMG/center_2019_09_01_02_47_57_972.jpg)
 
@@ -103,7 +93,7 @@ To capture good driving behavior, I recorded 1.5 laps on track one using center 
 
 ![right lane](./train_data/IMG/right_2019_09_01_02_47_57_972.jpg)
 
-I randomly shuffled the data set and put 20% of the data into a validation set. 
+I randomly shuffled the data (line 35) set and put 20% of the data into a validation set. 
 
 The final video of the autonomous mode can be found here:
 

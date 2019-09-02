@@ -69,7 +69,7 @@ model.add(Conv2D(filters=48, kernel_size=5, strides=(2, 2), activation='relu'))
 model.add(Conv2D(filters=64, kernel_size=3, strides=(1, 1), activation='relu'))
 model.add(Conv2D(filters=64, kernel_size=3, strides=(1, 1), activation='relu'))
 
-model.add(Flatten())
+model.add(Flatten()) #connecting the layers
 model.add(Dense(100, activation='relu'))
 model.add(Dense(50, activation='relu'))
 model.add(Dense(10, activation='relu'))
